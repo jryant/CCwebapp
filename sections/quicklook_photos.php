@@ -4,6 +4,8 @@ check_session();
 
 ql_add_input($_POST);
 
+// var_dump($_SESSION['photos']);
+// echo "<hr/>";
 
 ?>
 
@@ -17,7 +19,7 @@ ql_add_input($_POST);
 		    <h1>Upload Case Photos</h1>
 		    <p><strong>PHOTO GUIDELINES</strong>
 		    	<ul>
-		    		<li>Must be sharply focused &mdash; I enlarge to see certain critical details</li>
+		    		<li>Must be sharply focused &mdash; We must be able to enlarge to see certain critical details</li>
 					<li>JPGs preferred and &lt; 3 MB per photo.</li>
 					<li>Poorly focused pictures or those taken with a mediocre lens are not useful</li>
 					<li>In general photos from stand-alone cameras are much better than from a cell phone.</li>
@@ -25,18 +27,36 @@ ql_add_input($_POST);
 				</ul>
 			</p>
 		    
+		    <?php if(count($_SESSION['photos'])<10 && count($_SESSION['photos'])>=1){ ?>
+			    <strong class="error">You have already uploaded <?php echo count($_SESSION['photos']); ?> photos. Upload up to <?php echo 10-count($_SESSION['photos']); ?> more below.</strong>
+			    <br /><br />
+		    <?php } if (count($_SESSION['photos'])>=10) { ?>
+		    	<strong class="error">You have already uploaded <?php echo count($_SESSION['photos']); ?> photos.</strong>
+		    	<br /><br />
+				<button type="submit" class="button" onClick="parent.location='index.php?page=quicklook&step=2';return false;">Go Back</button>
+    			<button type="submit" class="button" style="float:right;" onClick="parent.location='index.php?page=quicklook&step=4';return false;">Next Step</button>
+		    <?php } else { ?>
+
 		    <label>Photos</label>
+
 		    <div id="AddFileInputBox">
 		    	<input id="fileInputBox" class="photo_input" style="margin-bottom: 5px;" type="file" onChange="checkFileType(this);" name="file[]"/>
-		    	<span><input type="file" id="fileInputBox" size="20" name="file[]" class="addedInput" onChange="checkFileType(this);" value=""/></span>
-		    	<span><input type="file" id="fileInputBox" size="20" name="file[]" class="addedInput" onChange="checkFileType(this);" value=""/></span>
+<!-- 		    	<span><input type="file" id="fileInputBox" size="20" name="file[]" class="addedInput" onChange="checkFileType(this);" value=""/></span>
+		    	<span><input type="file" id="fileInputBox" size="20" name="file[]" class="addedInput" onChange="checkFileType(this);" value=""/></span> -->
 		   	</div>
    		    <span class="small"><a href="#" id="AddMoreFileBox">Add More Photos</a></span>
 		    <div class="sep_s"></div>
 
 		    <input type="hidden" name="session_id" value="<?php echo $_SESSION['id']; ?>">
+			<button type="submit" class="button" onClick="parent.location='index.php?page=quicklook&step=2';return false;">Go Back</button>
 		    <button type="submit" class="button" onClick="validatePhotos();return false;" id="SubmitButton">Upload</button>
-		    
+
+   		    <?php if(count($_SESSION['photos'])<10 && count($_SESSION['photos'])>=1){ ?>
+		    <button type="submit" class="button" style="float:right;" onClick="parent.location='index.php?page=quicklook&step=4';return false;">Next Step</button>
+		    <?php } ?>
+
+		    <?php } ?>
+
 		    <div id="progressbox">
 		    	<div id="progressbar"></div>
 		    	<div id="statustxt">0%</div>
@@ -47,6 +67,7 @@ ql_add_input($_POST);
 		<form class="qlform" name="ql1" enctype="multipart/form-data" action="index.php?page=quicklook&step=4" method="post">
 			<p><strong>Please add a caption to describe each photo.</strong></p>
     		<div id="output"></div>
+    		<!-- <p class="ql_prev"><input type="button" value="Go Back" onClick="parent.location='index.php?page=quicklook&step=2'"></p> -->
     		<p class="ql_submit"><input type="submit" value="Next Step"></p>
     	</form>
 	</div>

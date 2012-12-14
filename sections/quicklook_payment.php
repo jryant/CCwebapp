@@ -8,7 +8,7 @@ check_session();
 // }
 // echo "<hr>";
 
-// $pnames = $_POST['pnames'];
+$pnames = $_POST['pnames'];
 // var_dump($pnames);
 // die();
 
@@ -22,10 +22,18 @@ foreach($pnames as $key=>$value){
 	$photo_exts[$val] = $photo_ext;
 	// unset($_POST['pdesc-'.$value]);
 }
-$_SESSION['photos'] = $photo_names;
-$_SESSION['photo_exts'] = $photo_exts;
+
+// if(isset($_SESSION['photos'])){
+// 	$_SESSION['photos'] = array_merge($_SESSION['photos'],$photo_names);
+// 	$_SESSION['photo_exts'] = array_merge($_SESSION['photo_exts'],$photo_exts);
+// } else {
+	$_SESSION['photos'] = $photo_names;
+	$_SESSION['photo_exts'] = $photo_exts;
+// }
 
 // var_dump($_SESSION['photos']);
+// echo "<hr>";
+// var_dump($_SESSION['photo_exts']);
 
 unset($_POST['pnames']);
 // unset($_SESSION['pnames']);
@@ -64,6 +72,7 @@ $s_why_prob = $_SESSION['s_why_prob'];
 <div class="qlform">
 
 <p><strong>Please confirm the information below before submiting your case for processing.</strong></p>
+<p class="ql_prev"><input type="button" value="Go Back" onClick="parent.location='index.php?page=quicklook&step=3'"></p>
 
 <h2>About You</strong></h2>
 <ul class="col1">
@@ -94,27 +103,35 @@ $s_why_prob = $_SESSION['s_why_prob'];
 	<li>Why is it a problem? What is the underlying concern? <span class="ans"><?php echo $s_why_prob; ?></span></li>
 </ul>
 
-<h2>Photos</strong></h2>
+<h2>Photos</h2>
 
 <?php
 
 foreach ($_SESSION['photos'] as $key => $value) {
-	echo '<div class="pcont"><img src="uploads/'.$_SESSION['id'].'/'.$key.$photo_exts[$key].'" width="100" height="100"><p>'.$value.'</p></div>';
+	echo '<div class="pcont"><img src="uploads/'.$_SESSION['id'].'/'.$key.$_SESSION['photo_exts'][$key].'" width="100" height="100"><p>'.$value.'</p></div>';
 }
 
 ?>
 
 <h2 style="clear:both;">Payment methods</h2>
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="float:left;">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="ZQPUALSK3Z5DW">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<input type="image" style="border:0 !important;" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form> -->
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="float:left;">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="3FGVBNK9FKMYG">
+<input type="image" style="border:0 !important;" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="payPalForm">
+
+<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="payPalForm">
 	<input type="hidden" name="custom" value="">
 	<input type="hidden" name="cmd" value="_xclick">
 	<input type="hidden" name="no_note" value="1">
@@ -126,13 +143,14 @@ foreach ($_SESSION['photos'] as $key => $value) {
 	<input type="image" name="submit" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
 	<img alt="" border="0" width="1" height="1"	src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
 </form>
-
-<form name="ql1" enctype="multipart/form-data" action="<?php echo $root; ?>/index.php?page=quicklook&step=5" method="get">
+ -->
+<form name="ql1" enctype="multipart/form-data" action="<?php echo $root; ?>/index.php?page=quicklook&step=5" method="get" style="margin-top:4px;float:left;">
 	<input type="hidden" name="page" value="quicklook">
 	<input type="hidden" name="step" value="5">
 	<input type="hidden" name="pay_status" value="cheque">
-	<input type="submit" value="Pay by cheque" class="cheque_btn">
+	<input type="submit" value="Pay by check" class="cheque_btn">
 </form>
 
+<div style="clear:both;"></div>
 
 </div>

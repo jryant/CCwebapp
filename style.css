@@ -387,6 +387,9 @@ a:active.vlink {
 .ql_next {
 	margin-left:auto;
 }
+.ql_prev {
+	float:left;
+}
 .ql_next a,
 .ql_prev a {
 	padding:6px 12px;
@@ -466,8 +469,12 @@ a:active.vlink {
 	float:left;
 }
 
-.err {
+input.error,
+textarea.error {
 	border-color:red !important;
+}
+label.error {
+	color:red !important;
 }
 .ans {
 	font-weight: bold;

@@ -9,11 +9,27 @@ echo "<!-- INCLUDED HEADER FILE -->
 <meta name=\"Description\" content=\"Cary Concrete Products is a specialty designer, supplier, and subcontractor of cast stone, precast concrete and other molded materials for commercial construction projects and restoration work. Cary Concrete Products is located in the Chicago area.\">
 <meta name=\"verify-v1\" content=\"XUhvZhpZ+l2vOWQzsYMKOa7xiKzNPaegmtuj9gHTgOc=\" />
 {$head_spec[$page]}
-<link rel=\"stylesheet\" href=\"$root/style.css\" type=\"text/css\">";
-if ($page=="quicklook" && $_GET['step']=="3"){
+<link rel=\"stylesheet\" href=\"$root/style.css\" type=\"text/css\">
+<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\" type=\"text/javascript\"></script>
+<script src=\"js/jquery.form.js\" type=\"text/javascript\"></script>
+<script src=\"js/jquery.validate.js\" type=\"text/javascript\"></script>
+";
+if ($page=="quicklook" && in_array($_GET['step'], array("1","2"))){
 ?>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.qlform').validate({
+		// submitHandler: function(form) {
+			// $('label[for="s_rel"].error').hide();
+			// $('label[for="s_rel"]').append('<label class="error" for="s_rel" generated="true">This field is required.</label>');
+		// }
+	});
+});
+</script>
+<? } ?>
+
+<?php if ($page=="quicklook" && $_GET['step']=="3"){
+?>
 <script type="text/javascript"> 
 $(document).ready(function() { 
 	//elements
@@ -25,7 +41,8 @@ $(document).ready(function() {
 	var output 				= $("#output"); //ajax result output element
 	var completed 			= '0%'; //initial progressbar value
 	var FileInputsHolder 	= $('#AddFileInputBox'); //Element where additional file inputs are appended
-	var MaxFileInputs		= 8; //Maximum number of file input boxs
+	var MaxFileInputs		= 10-<?php echo count($_SESSION['photos']); ?>; //Maximum number of file input boxs
+	console.log(MaxFileInputs);
 
 	// adding and removing file input box
 	var i = $('#AddFileInputBox div').size() + 1;
@@ -128,7 +145,16 @@ function validatePhotos(){
 
 </script> 
 <link href="file_upload.css" rel="stylesheet" type="text/css" />
-<?php }
+<?php } ?>
+
+<script type="text/javascript">
+// $(window).unload(function(){
+// function refresh_warn(){
+	// alert("Do not refresh the page!");
+// }
+</script>
+
+<?php
 echo "
 </head>
 <body>
