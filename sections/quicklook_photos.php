@@ -28,9 +28,9 @@ ql_add_input($_POST);
 			</p>
 		    
 		    <?php if(count($_SESSION['photos'])<10 && count($_SESSION['photos'])>=1){ ?>
-			    <strong class="error">You have already uploaded <?php echo count($_SESSION['photos']); ?> photos. Upload up to <?php echo 10-count($_SESSION['photos']); ?> more below.</strong>
-			    <br /><br />
-		    <?php } if (count($_SESSION['photos'])>=10) { ?>
+			    <!-- <strong class="error">You have already uploaded <?php echo count($_SESSION['photos']); ?> photos. Upload up to <?php echo 10-count($_SESSION['photos']); ?> more below.</strong> -->
+			    <!-- <br /><br /> -->
+		    <?php // } if (count($_SESSION['photos'])>=10) { ?>
 		    	<strong class="error">You have already uploaded <?php echo count($_SESSION['photos']); ?> photos.</strong>
 		    	<br /><br />
 				<button type="submit" class="button" onClick="parent.location='index.php?page=quicklook&step=2';return false;">Go Back</button>

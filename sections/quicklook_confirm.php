@@ -1,10 +1,10 @@
 <?php
 
-// check_session();
+check_session();
 ql_add_input($_POST);
 create_case();
 
-// var_dump($_SESSION['photos']);
+// var_dump($_SESSION);
 
 $path = "uploads/".$_SESSION['case_number']."/";
 // $path = "uploads/QL-14094/";
@@ -31,7 +31,7 @@ $_SESSION['photos_zip'] = ($result) ? $root.'/'.$path.'photos.zip' : 'error' ;
 
 if ($_GET['pay_status']=="cheque"){
 	email_case($_SESSION['case_number'],$_SESSION['c_name'],$_SESSION['c_email'],$_SESSION['c_phone'],$_SESSION['c_job_title'],$_SESSION['c_company'],$_SESSION['c_address'],$_SESSION['s_rel'],$_SESSION['s_issue_desc'],$_SESSION['s_salt_exp'],$_SESSION['s_salt_exp_notes'],$_SESSION['s_year'],$_SESSION['s_year_notes'],$_SESSION['s_address'],$_SESSION['s_purpose'],$_SESSION['s_cur_use'],$_SESSION['s_first_noticed'],$_SESSION['s_other_probs'],$_SESSION['s_why_prob'],$_SESSION['photos_zip'],"Not Paid (check)");
-	$msg = "<p>Thank you for using our Quick Look service. Please make checks payable to Cary Concrete Products the case number (<span class=\"ans\">#".$_SESSION['case_number']."</span>) on the check. Mail to:</p>
+	$msg = "<p>Thank you for using our Quick Look service. Please make checks payable to Cary Concrete Products with the case number (".$_SESSION['case_number'].") on the check. Mail to:</p>
 		<p align=center>Cary Concrete Products
 		<br>211 Dean St, Suite 1D
 		<br>Woodstock, Illinois 60098</p>
@@ -56,7 +56,7 @@ notify_c($_SESSION['c_name'],$_SESSION['c_email'],$_SESSION['case_number']);
 echo $msg;
 
 // echo "Payment method: ".$_GET['pay_status']."<br />";
-echo "<p>Case number: <span class=\"ans\">#".$_SESSION['case_number']."</span></p>";
+echo "<p>Case number: <span class=\"ans\">".$_SESSION['case_number']."</span></p>";
 
 ?>
 

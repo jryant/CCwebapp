@@ -1,39 +1,58 @@
 <?php
 
 check_session();
+// unset($_SESSION['photos']);
+// unset($_SESSION['photo_exts']);
 
+// echo "<h1>\$_POST</h1>";
 // var_dump($_POST);
 // foreach($_POST as $key=>$value){
 // 	echo $key." - ".$value."<br>";
 // }
 // echo "<hr>";
 
-$pnames = $_POST['pnames'];
-// var_dump($pnames);
-// die();
+if($_POST['pnames']){
+	$pnames = $_POST['pnames'];
+	// echo "<h1>\$pnames</h1>";
+	// var_dump($pnames);
+	// die();
 
-// echo "<hr>";
+	// echo "<hr>";
 
-foreach($pnames as $key=>$value){
-	$pos = strpos($value,'.');
-	$val = substr($value, 0, $pos);
-	$photo_ext = substr($value, $pos);
-	$photo_names[$val] = $_POST['pdesc-'.$val];
-	$photo_exts[$val] = $photo_ext;
-	// unset($_POST['pdesc-'.$value]);
+	foreach($pnames as $key=>$value){
+		$pos = strpos($value,'.');
+		$val = substr($value, 0, $pos);
+		$photo_ext = substr($value, $pos);
+		$photo_names[$val] = $_POST['pdesc-'.$val];
+		$photo_exts[$val] = $photo_ext;
+		// $_SESSION['photos'] = array($val => $_POST['pdesc-'.$val]);
+		// $photo_exts[$val] = $photo_ext;
+		// unset($_POST['pdesc-'.$value]);
+	}
+	if($_SESSION['photos']){
+		$_SESSION['photos'] = array_merge($_SESSION['photos'], $photo_names);
+		$_SESSION['photo_exts'] = array_merge($_SESSION['photo_exts'], $photo_exts);
+	} else {
+		$_SESSION['photos'] = ($photo_names) ? $photo_names : $_SESSION['photos'];
+		$_SESSION['photo_exts'] = ($photo_exts) ? $photo_exts : $_SESSION['photo_exts'];
+	}
 }
 
 // if(isset($_SESSION['photos'])){
 // 	$_SESSION['photos'] = array_merge($_SESSION['photos'],$photo_names);
 // 	$_SESSION['photo_exts'] = array_merge($_SESSION['photo_exts'],$photo_exts);
 // } else {
-	$_SESSION['photos'] = $photo_names;
-	$_SESSION['photo_exts'] = $photo_exts;
+	// $_SESSION['photos'] = ($photo_names) ? $photo_names : $_SESSION['photos'];
+	// $_SESSION['photo_exts'] = ($photo_exts) ? $photo_exts : $_SESSION['photo_exts'];
 // }
 
+// echo "<h1>\$_SESSION['photos']</h1>";
 // var_dump($_SESSION['photos']);
 // echo "<hr>";
+// echo "<h1>\$_SESSION['photo_exts']</h1>";
 // var_dump($_SESSION['photo_exts']);
+// echo "<hr>";
+
 
 unset($_POST['pnames']);
 // unset($_SESSION['pnames']);
@@ -71,7 +90,7 @@ $s_why_prob = $_SESSION['s_why_prob'];
 
 <div class="qlform">
 
-<p><strong>Please confirm the information below before submiting your case for processing.</strong></p>
+<p><strong>PLEASE REVIEW AND CHECK THAT EVERYTHING IS FILLED OUT CORRECTLY.</strong><br/>If you need to make changes use the Go Back button.</p>
 <p class="ql_prev"><input type="button" value="Go Back" onClick="parent.location='index.php?page=quicklook&step=3'"></p>
 
 <h2>About You</strong></h2>
@@ -108,7 +127,7 @@ $s_why_prob = $_SESSION['s_why_prob'];
 <?php
 
 foreach ($_SESSION['photos'] as $key => $value) {
-	echo '<div class="pcont"><img src="uploads/'.$_SESSION['id'].'/'.$key.$_SESSION['photo_exts'][$key].'" width="100" height="100"><p>'.$value.'</p></div>';
+	echo '<div class="pcont"><img src="uploads/'.$_SESSION['id'].'/thumb_'.$key.$_SESSION['photo_exts'][$key].'" width="100" height="100"><p>'.$value.'</p></div>';
 }
 
 ?>

@@ -218,7 +218,7 @@ function create_case(){
 	$new_count = (int)$counter+1;
 	$handle = fopen($file,"w") or die("Cannot open file to write: ".$file);
 	fwrite($handle,$new_count);
-	$result = rename('uploads/'.$_SESSION['id'].'/', 'uploads/QL-'.$new_count.'/');
+	$result = rename("uploads/".$_SESSION['id']."/", "uploads/QL-".$new_count."/");
 	$_SESSION['case_number'] = "QL-".$new_count; // Success
 	// var_dump($result);
 	// return $new_count;

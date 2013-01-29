@@ -92,12 +92,14 @@ if (is_array($ImageName))
 					// echo '<table width="100%" border="0" cellpadding="4" cellspacing="0">';
 					// echo '<tr>';
 					// echo '<td align="center"><img src="uploads/'.$ThumbPrefix.$NewImageName.'" alt="Thumbnail" height="'.$ThumbSquareSize.'" width="'.$ThumbSquareSize.'"></td>';
+					
 					echo '
 					<div class="ql_photo">
 						<img src="uploads/'.$session_id.'/'.$ThumbPrefix.$NewImageName.'.'.$ImageExt.'" alt="Thumbnail" height="'.$ThumbSquareSize.'" width="'.$ThumbSquareSize.'">
 						<textarea rows="4" cols="14" name="pdesc-'.$NewImageName.'"></textarea>
 						<input type="hidden" name="pnames[]" value="'.$NewImageName.'.'.$ImageExt.'">
 					</div>';
+
 					// echo '</tr><tr>';
 					// echo '<td align="center"><img src="uploads/'.$NewImageName.'" alt="Resized Image" height="'.$ResizedHeight.'" width="'.$ResizedWidth.'"></td>';
 					// echo '</tr>';

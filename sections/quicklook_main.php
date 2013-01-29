@@ -1,6 +1,8 @@
 <?php 
 // if(!isset($_SESSION)){session_start();}
 
+echo "<div id='browser-warning'><strong>Attention!</strong> You are using an unsupported browser! We recommend using Chrome, Firefox, Safari, or Internet Explorer (v. 8 or later) for using our Quick Look service. Thank you.</div>";
+
 $step = 0;
 if(isset($_GET['step'])){
 	$step = $_GET['step'];

@@ -23,6 +23,8 @@ if(!$_SESSION['id']){
 <!-- <div class="ql_prev"><a href="?page=quicklook">Back</a></div> -->
 
 <form class="qlform" name="ql1" action="index.php?page=quicklook&step=2" method="post">
+	
+	<div class="warning"><img src="images/alert.jpeg" style="float:left;margin:0 6px 6px 0" height="60" />BEFORE PROCEEDING TO ORDER A QUICK LOOK, YOU MUST READ THE PHOTO GUIDELINES AND HAVE APPROPRIATE PICTURES READY FOR UPLOADING.</div>
 
 	<ul class="col1">
 		<li><label for="c_name">Name:</label><input type="text" name="c_name" class="required" value="<?php clean('c_name'); ?>"></li>
@@ -43,11 +45,11 @@ if(!$_SESSION['id']){
 			</ul>
 		</li>
 		<br>
-		<li><label for="c_address">Mailing address:</label><textarea cols="30" rows="4" name="c_address" class="required"><?php clean('c_address'); ?></textarea></li>
+		<li><label for="c_address">Mailing address:</label><textarea cols="30" rows="4" name="c_address"><?php clean('c_address'); ?></textarea></li>
 	</ul>
 
 	<p style="clear:both;"><br><strong>Terms and conditions</strong></p>
-	<p>This is not a service involving licensed (engineers or architects) design professionals. We offer the informed opinions of highly experienced, narrowly focused, and knowledgeable professionals. Opinions offered are based solely on information you provide and do not reflect any independent investigation. We encourage you to get a second opinion from competent professional before acting on any recommendations. By clicking below and sending us money, you agree that you are receiving opinions and that you hold Cary Concrete Products, Inc., and it's employees and related consultants, harmless. You agree that in no event is there no basis to sue Cary Concrete Products, Inc. or its employees or anyone we involve in evaluating your Quick Look request for any reason. You further agree to accept our analysis on these terms. You must click below to agree to these terms and conditions. Clicking means that you agree and understand that this is not professional design advice.</p>
+	<p>This is not a service involving licensed design professionals (engineers or architects). We offer the informed opinions of highly experienced, narrowly focused, and knowledgeable professionals. Opinions offered are based solely on information you provide and do not reflect any independent investigation.  <strong><em>You must read the <a href="index.php?page=quicklook#guidelines">Photo Guidelines</a> and have appropriate photos ready for upload before proceeding.</em></strong>  We encourage you to get a second opinion from a competent professional before acting on any recommendations.  By clicking below and sending us money, you agree that you are receiving opinions and that you hold Cary Concrete Products, Inc., and its employees and related consultants, harmless. You acknowledge that there are no refunds. You agree that in no event is there any basis to sue Cary Concrete Products, Inc. or its employees or anyone we involve in evaluating your Quick Look request for any reason. You further agree to accept our analysis on the terms stated herein. You must click below to agree to these terms and conditions. Clicking means that you agree and understand that this is not professional design advice.</p>
 	<p class="ql_submit"><input type="checkbox" name="terms" class="required" <?php echo ($_SESSION['terms']=="on") ? " checked=\"checked\"" : "" ?>> <label for="terms">I accept these terms.</label> <input type="submit" value="Next Step"></p>
 	<div class="cleafix"></div>
 
