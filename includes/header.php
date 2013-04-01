@@ -1,7 +1,8 @@
 <?php if(!isset($_SESSION)){session_start();}
-echo "<!-- INCLUDED HEADER FILE -->
+/* echo "<!-- INCLUDED HEADER FILE -->
 <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"
-\"http://www.w3.org/TR/html4/loose.dtd\">
+\"http://www.w3.org/TR/html4/loose.dtd\">"; */
+echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
 <html>
 <head>
 <title>Cary Concrete Products Inc. - {$sections[$page]}</title>
@@ -17,9 +18,17 @@ echo "<!-- INCLUDED HEADER FILE -->
 <script src=\"js/jquery.form.js\" type=\"text/javascript\"></script>
 <script src=\"js/jquery.validate.js\" type=\"text/javascript\"></script>
 <script src=\"js/jquery.nivo.slider.pack.js\" type=\"text/javascript\"></script>
+<script src=\"js/jquery.numeric.js\" type=\"text/javascript\"></script>
+<!--[if lte IE 8]>
+<style type=\"text/css\">
+	#maincontainer { width: 940px; }
+	.nivoSlider { z-index: 100; }
+	.nivoSlider a.nivo-imageLink { z-index:60; }
+</style>
+<![endif]-->
 <!--[if lte IE 7]>
 <style type=\"text/css\">
-#browser-warning { display:block; }
+	#browser-warning { display:block; }
 </style>
 <![endif]-->
 ";
@@ -29,6 +38,13 @@ if ($page=="quicklook"){ ?>
 <script src="js/jquery.prettyPhoto.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$('#slider1, #slider2').nivoSlider({
+		effect: 'fade',
+		animSpeed: 100,
+		// pauseTime: 6000,
+		manualAdvance: true
+	});
+
 	$("a[rel^='prettyPhoto']").prettyPhoto({
 		social_tools: false,
 		overlay_gallery: false
@@ -39,8 +55,46 @@ $(document).ready(function(){
 if ($page=="quicklook" && in_array($_GET['step'], array("1","2"))){
 ?>
 <script type="text/javascript">
+// $("#myform").validate({
+//   rules: {
+//     field: {
+//       required: true,
+//       phoneUS: true
+//     }
+//   }
+// });
 $(document).ready(function(){
-	$('.qlform').validate();
+	$.validator.addMethod("phoneUS", function(phone_number, element) {
+		phone_number = phone_number.replace(/\s+/g, ""); 
+		return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+	}, "Please specify a valid phone number");
+
+	$.validator.addMethod('numericOnly', function (value) {
+		return /[0-9 ]/.test(value); 
+	}, 'Please only enter numeric values (0-9)');
+
+	$('.qlform').validate({
+		rules: {
+			c_phone: {
+				required: true,
+				phoneUS: true
+			},
+			c_email_match: {
+         	   equalTo: '#c_email'
+        	},
+        	s_year: {
+        		numericOnly: true
+        	}
+		}
+	});
+
+	jQuery.extend(jQuery.validator.messages, {
+	    equalTo: "Email addresses must be the same.",
+	});
+
+	
+	$(".s_year").numeric();
+
 });
 </script>
 <? } ?>
@@ -67,7 +121,7 @@ $(document).ready(function() {
 	$('#AddMoreFileBox').live('click', function() {
 		if(i < MaxFileInputs)
 		{
-			$('<span><input type="file" id="fileInputBox" size="20" name="file[]" class="addedInput" onChange="checkFileType(this);" value=""/><a href="#" class="small2" id="removeFileBox"><img src="images/close_icon.gif" border="0" /></a></span>').appendTo(FileInputsHolder);
+			$('<span><input type="file" size="20" name="file[]" class="addedInput fileInputBox" onChange="checkFileType(this);" value=""/><a href="#" class="small2" id="removeFileBox"><img src="images/close_icon.gif" border="0" /></a></span>').appendTo(FileInputsHolder);
 			i++;
 		}
 		if(i == MaxFileInputs){

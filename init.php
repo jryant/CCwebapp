@@ -3,11 +3,13 @@
 /* --------- Edit GLOBAL VARIABLES --------------- */
 
 $ql_cost = "$125"; // Cost of Quick Look program (does not affect PayPal)
-$cc_email = "jasonryant+blc@gmail.com"; // Administrative email account
+// $cc_email = "jasonryant+blc@gmail.com";
+$cc_email = "leo@caryconcrete.com"; // Administrative email account
 
 /* --------- DON'T EDIT BELOW THIS LINE ---------- */
 
-$root = "/`BLC/caryconcrete.com/web";
+$root = "http://www.bluelotuscreative.com/caryconcrete.com";
+// $root = "/`BLC/caryconcrete.com/web";
 $debug = true;
 
 $sections = array("index"=>"Home","materials"=>"Materials","services"=>"Services","jobs"=>"Past Jobs","writings"=>"Writings","book"=>"ABC Book","quicklook"=>"Quick Look","contact"=>"Contact");
@@ -80,7 +82,7 @@ function compress_image($source_url, $destination_url, $quality) {
 //usage
 // $compressed = compress_image('source.png', 'destination.jpg', 90);
  
-function email_case($case_number,$c_name,$c_email,$c_phone,$c_job_title,$c_company,$c_address,$s_rel,$s_issue_desc,$s_salt_exp,$s_salt_exp_notes,$s_year,$s_year_notes,$s_address,$s_purpose,$s_cur_use,$s_first_noticed,$s_other_probs,$s_why_prob,$photos_zip,$pay_status){
+function email_case($case_number,$c_name,$c_email,$c_phone,$c_job_title,$c_company,$c_address,$c_company_rel,$s_rel,$s_rel_other,$s_issue_desc,$s_salt_exp,$s_salt_exp_notes,$s_year,$s_year_notes,$s_address,$s_purpose,$s_cur_use,$s_first_noticed,$s_other_probs,$s_why_prob,$photos_zip,$pay_status,$photos){
 
 	global $cc_email;
 	$to = $cc_email;
@@ -108,7 +110,11 @@ $c_address<br />
 <b>Job title:</b> $c_job_title<br />
 <b>Company:</b> $c_company<br />
 <b>Company role/relationship:</b> $c_company_rel<br />
-<b>Relationship to structure:</b> $s_rel<br />
+<b>Relationship to structure:</b> ";
+
+$message .= ($s_rel=="Other") ? "Other: ".$s_rel_other : $s_rel ;
+
+$message .= "<br />
 
 <h2>About the Structure</h2>
 
@@ -135,20 +141,31 @@ $s_other_probs<br />
 <b>Why is it a problem? What is the underlying concern?</b><br />
 $s_why_prob<br />
 <br />
-<b>Photos:</b> <a href='$photos_zip'>$photos_zip</a><br />
+<h2>Photos</h2>
+<b>Download link:</b> <a href='$photos_zip'>$photos_zip</a><br />
 <br />
+<b>Captions:</b><br />
+<br />";
+foreach ($photos as $key => $value) {
+	$message .='<b>'.$key.'</b>: '.$value.'<br/><br />
+';
+}
+$message .= "
 --<br />
 <br />
 This is an automatically generated email. Please do not reply.";
 
-	mail($to, $subject, $message, $headers) or die("mail error");
+// $message = "this is a test";
+
+	return mail($to, $subject, $message, $headers) or die("mail error");
+	// mail($bcc_email, $subject, $message, $headers) or die("mail error");
 
 }
 
 function notify_c($c_name,$c_email,$case_number){
 	$to = $c_email;
 	// $sender_email = "no-reply@caryconcrete.com";
-	$subject = "Quicklook Case #".$case_number;
+	$subject = "Quick Look Case #".$case_number;
 	$headers = "From: Cary Concrete <no-reply@caryconcrete.com>\r\n" .
 				"Reply-To: Cary Concrete <".$cc_email.">\r\n" .
 	    		"X-Mailer: PHP/" . phpversion() .
@@ -167,6 +184,7 @@ Thank you.<br />
 This is an automatically generated email. Please do not reply.";
 		
 	mail($to, $subject, $message, $headers);
+	// mail($bcc_email, $subject, $message, $headers);
 }
 
 /* creates a compressed zip file */

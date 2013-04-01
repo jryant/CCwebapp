@@ -68,6 +68,7 @@ $c_job_title = $_SESSION['c_job_title'];
 $c_company = $_SESSION['c_company'];
 $c_company_rel = $_SESSION['c_company_rel'];
 $s_rel = $_SESSION['s_rel'];
+$s_rel_other = $_SESSION['s_rel_other'];
 $c_address = $_SESSION['c_address'];
 
 $s_issue_desc = $_SESSION['s_issue_desc'];
@@ -91,7 +92,7 @@ $s_why_prob = $_SESSION['s_why_prob'];
 <div class="qlform">
 
 <p><strong>PLEASE REVIEW AND CHECK THAT EVERYTHING IS FILLED OUT CORRECTLY.</strong><br/>If you need to make changes use the Go Back button.</p>
-<p class="ql_prev"><input type="button" value="Go Back" onClick="parent.location='index.php?page=quicklook&step=3'"></p>
+<p class="ql_prev"><input type="button" value="Go Back" onClick="parent.location='index.php?page=quicklook&step=1'"></p>
 
 <h2>About You</strong></h2>
 <ul class="col1">
@@ -104,7 +105,7 @@ $s_why_prob = $_SESSION['s_why_prob'];
 	<li>Job title: <span class="ans"><?php echo $c_job_title; ?></span></li>
 	<li>Company: <span class="ans"><?php echo $c_company; ?></span></li>
 	<li>Company role/relationship: <span class="ans"><?php echo $c_company_rel; ?></span></li>
-	<li>Relationship to structure: <span class="ans"><?php echo $s_rel; ?></span></li>
+	<li>Relationship to structure: <span class="ans"><?php echo ($s_rel == "Other") ? "Other: ".$s_rel_other : $s_rel ; ?></span></li>
 </ul>
 
 <h2>About the Structure</strong></h2>

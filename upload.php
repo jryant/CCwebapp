@@ -64,9 +64,16 @@ if (is_array($ImageName))
 			//Get file extension from Image name, this will be re-added after random name
 			$ImageExt = substr($ImageName[$i], strrpos($ImageName[$i], '.'));
 			$ImageExt = str_replace('.','',$ImageExt);
+
+			$ImgNameNoExt = strtolower(str_replace(' ', '_', substr($ImageName[$i],0,strrpos($ImageName[$i], '.'))));
+			$ImgNameNoExt = preg_replace("/[^a-zA-Z0-9]/", "", $ImgNameNoExt);
+
+			// $pos = strpos($value,'.');
+			// $val = substr($value, 0, $pos);
+			// $photo_ext = substr($value, $pos);
 	
 			//Construct a new image name (with random number added) for our new image.
-			$NewImageName = $RandomNumber; //'.'.$ImageExt;
+			$NewImageName = $ImgNameNoExt; //$ImageName[$i]; //$RandomNumber; //'.'.$ImageExt;
 
 			//Set the Destination Image path with Random Name
 			$thumb_DestRandImageName 	= $DestinationDirectory.$ThumbPrefix.$NewImageName.'.'.$ImageExt; //Thumb name

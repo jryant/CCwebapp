@@ -28,11 +28,12 @@ if(!$_SESSION['id']){
 
 	<ul class="col1">
 		<li><label for="c_name">Name:</label><input type="text" name="c_name" class="required" value="<?php clean('c_name'); ?>"></li>
-		<li><label for="c_email">Email address:</label><input type="text" name="c_email" class="required email" value="<?php echo $_SESSION['c_email']; ?>"></li>
+		<li><label for="c_email">Email address:</label><input id="c_email" type="text" name="c_email" class="required email" value="<?php echo $_SESSION['c_email']; ?>"></li>
+		<li><label for="c_email_match">Confirm email address:</label><input type="text" name="c_email_match" class="required email" value="<?php echo $_SESSION['c_email_match']; ?>"></li>
 		<li><label for="c_phone">Phone number:</label><input type="text" name="c_phone" class="required" value="<?php echo $_SESSION['c_phone']; ?>"></li>
-		<li><label for="c_job_title">Job title:</label><input type="text" name="c_job_title" class="required" value="<?php echo $_SESSION['c_job_title']; ?>"></li>
-		<li><label for="c_company">Company:</label><input type="text" name="c_company" class="required" value="<?php echo $_SESSION['c_company']; ?>"></li>
-		<li><label for="c_company_rel">Company Role/Relationship:</label><input type="text" name="c_company_rel" class="required" value="<?php echo $_SESSION['c_company_rel']; ?>"></li>
+		<li><label for="c_job_title">Job title:</label><input type="text" name="c_job_title" value="<?php echo $_SESSION['c_job_title']; ?>"></li>
+		<li><label for="c_company">Company:</label><input type="text" name="c_company" value="<?php echo $_SESSION['c_company']; ?>"></li>
+		<li><label for="c_company_rel">Company Role/Relationship:</label><input type="text" name="c_company_rel" value="<?php echo $_SESSION['c_company_rel']; ?>"></li>
 	</ul>
 	<ul class="col2">
 		<li><label for="s_rel">Relationship to structure:</label>

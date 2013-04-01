@@ -18,23 +18,19 @@ $(window).load(function() {
     	return false;
 	});
 
-	$('#slider1, #slider2').nivoSlider({
-		effect: 'fade',
-		animSpeed: 100,
-		// pauseTime: 6000,
-		manualAdvance: true
-	});
 });
 </script>
 
 <div id="tabs">
+	<!-- <li><a href="?page=quicklook&step=1" onClick="location.href='?page=quicklook&step=1';return false;"><span>Get A Quick Look</span></a></li> -->
+	<div class="ql_next"><a href="?page=quicklook&step=1">Get A Quick Look</a></div>
 	<ul class="submenu">
 		<!-- <div class="ql_next"><a href="?page=quicklook&step=1">Begin New Case</a></div> -->
 <!-- 		<div class="ql_next"><a href="#inline-1" rel="prettyPhoto" >Get A Quick Look</a></div> -->
-		<div id="inline-1" class="hide" style="display:none;">
+		<!-- <div id="inline-1" class="hide" style="display:none;">
 			<img src="images/alert.jpeg" width="50" style="float:left; margin:0 10px 10px 0;">
 			<p>BEFORE PROCEEDING TO GET A QUICK LOOK, YOU MUST HAVE READ THE <a class="faq-link" href="index.php?page=quicklook#faq">PHOTO GUIDELINES</a> AND HAVE PICTURES READY FOR UPLOADING.</p>
-		</div>
+		</div> -->
 		<li><a href="#about"><span>About</span></a></li>
 		<li><a href="#guidelines"><span>Photo Guidelines</span></a></li>
 		<li><a href="#faq"><span>FAQ</span></a></li>
@@ -87,7 +83,7 @@ $(window).load(function() {
 					<li>The whole structure and some surroundings (If structure is small and discrete then this view may be combined with the next photo)</li>
 					<li>A substantial area surrounding the problem, centered on the problem. (If structure is small and discrete #1 and #2 may be the same)</li>
 					<li>The problem area and a little bit of the area around it. (one picture for each example of the problem).</li>
-					<li>4. A close-up of the problem (one close-up for each example of the problem).</li>
+					<li>A close-up of the problem (one close-up for each example of the problem).</li>
 				</ol>
 			</li>
 			<li>10 photos maximum per Quick Look. It's called &quot;Quick Look&quot; for a reason. If you feel that more than 10 photos are necessary to communicate the nature and details of your problem, then one option is to break it into 2 separate Quick Looks.</li>
@@ -121,29 +117,26 @@ $(window).load(function() {
 	<div id="example1">
 		<h1>Example Report #1</h1>
 
-		<h2 style="text-align:center;">Example #1</h2>
-
 		<p>Example #1 is of a planter with a minor cosmetic problem where the owner was concerned if there was also a durability problem. Structure is a sidewalk planter subject to splashing of road salt. Photos are from various elevations, and may be roadside or not-roadside. Pictures were taken 6-8 months (one winter) after installation.</p>
 
 		<div class="report-left">
 			<h2>Our Description Of The Problem</h2>
-			<p>Brick is spalling at specific locations. It appears to be localized. We also see efflorescence in the same areas as the spalling.</p>
+			<p>Apparently scaling or flaking on some pieces of the cast stone sidewalk planters. Scaling and flaking and &quot;popouts&quot; are similar in that they all involve loss of mortar (cement paste and sand) that is covering aggregate (stone). In a case like this all three may be involved, though I don't think we are seeing typical popouts (which involve a stone that expands when saturated and frozen). Observed following one season of freeze-thaw.</p>
 
 			<h2>Likely Causes</h2>
-			<p>Without knowing both the planned and as-built details of the internal construction of the wall (anchorage to backup, attachment method of stills, etc.) it is difficult to be confident of causes. We do see two apparent problems &mdash; water penetration as evidenced by the efflorescence and stresses (apparently axial) on the brick as evidenced by the spalling and cracking. A manufacturing problem with the brick is very unlikely; such problems are very rare with brick and because the problems are very localized. One location is at a corner where forces in a wall accumulate. There is no control joint near the corner. The efflorescence may be showing at damaged areas preferentially as the cracks are a path for moisture to escape, and that &quot;traffic&quot; leaves the efflorescence as a result. The lack of efflorescence or mortar deterioration in the cast stone sill or the sill bed joint points away from significant water infiltration.</p>
+			<p>The mortar (sand and cement paste portion or fraction of concrete) has broken off leaving a tiny crater and a visible stone. This occurs only where a stone is very near the surface and there is a weak thin mortar paste above the stone. A number of factors in both the mix and the piece can lead to this. Because it is observed only in some stones (far from a majority) we conclude that there is no inherent problem in the mix design or the material. Likely causes (and all can be operative include minor curing issues, dust on the stone, particles of deleterious material (dirt, chert, etc.) in the sand.</p>
 
 			<h2>Anticipated Future Behavior</h2>
-			<p>I expect that the majority of the problem areas have shown themselves. I would expect to see a few new ones in the next year or two, and a declining number of new appearances in following years. This is not likely to lead to a reduced service life of the building or the wall..</p>
+			<p>I expect that the majority of the problem areas have shown themselves. I would expect to see a few new ones in year 2, and a declining number of new appearances in following years. This is not likely to lead to a reduced service life or to complete deterioration of a piece..</p>
 
 			<h2>Possible Remediation</h2>
-			<p>Cutting control joints in the brick may solve the problem. It is the simplest measure to take as there is no disassembly or opening of the wall. Consider doing that either where needed or in 2-3 affected areas. At the same time replace damaged bricks and mortar. If a year later there is no renewed spalling or significant efflorescence in the repaired areas, then consider it fixed. If not, or even now if you are concerned, you can have a masonry specialist engineer or consultant examine the wall.</p>
+			<p>None practical in our opinion. You can replace. Any patch will likely be as visible or more so than what you see now and will be at risk to fail as it will be very thin and weak. The stones that are exposed are &quot;colder&quot;in terms of color than the surface, which shows a lot of brown sand particles. You could carefully take a fine paint brush and put a matching stain on the stone. This will be a lot of work and will reduce the visibility of the affected areas. Will affect appearance, will not affect durability</p>
 
 			<h2>Your Particular Questions/Concerns</h2>
-			<p>Your main concern was whether you had defective brick. You seem to have a problem with the construction of the wall rather defective materials. Your secondary concern was the consequence of doing nothing. The affected brick are likely to continue to deteriorate ifyou take no action.</p>
+			<p>Your main concern was whether these pieces were likely to continue scaling and crumbling over the next few years. That is not likely.</p>
 
 			<h2>Attachments</h2>
-			<p>None.</p>
-
+			<p><a href="images/qlgal/1234a1.pdf" target="_blank">1234a1.pdf</a> points to certain areas in one of your photos.</p>
 		</div>
 
 		<div class="report-right">
@@ -164,29 +157,26 @@ $(window).load(function() {
 	<div id="example2">
 		<h1>Example Report #2</h1>
 
-		<h2 style="text-align:center;">Example #2</h2>
-
 		<p>Example #2 is of a masonry problem on a building. The building was several years old when pictures were taken. All photos are on the west elevation. This is a mild appearance problem and also a concern for future durability.</p>
 
 		<div class="report-left">
 			<h2>Our Description Of The Problem</h2>
-			<p>Apparently scaling or flaking on some pieces of the cast stone sidewalk planters. Scaling and flaking and &quot;popouts&quot; are similar in that they all involve loss of mortar (cement paste and sand) that is covering aggregate (stone). In a case like this all three may be involved, though I don't think we are seeing typical popouts (which involve a stone that expands when saturated and frozen). Observed following one season of freeze-thaw.</p>
+			<p>Brick is spalling at specific locations. It appears to be localized. We also see efflorescence in the same areas as the spalling.</p>
 
 			<h2>Likely Causes</h2>
-			<p>The mortar (sand and cement paste portion or fraction of concrete) has broken off leaving a tiny crater and a visible stone. This occurs only where a stone is very near the surface and there is a weak thin mortar paste above the stone. A number of factors in both the mix and the piece can lead to this. Because it is observed only in some stones (far from a majority) we conclude that there is no inherent problem in the mix design or the material. Likely causes (and all can be operative include minor curing issues, dust on the stone, particles of deleterious material (dirt, chert, etc.) in the sand.</p>
+			<p>Without knowing both the planned and as-built details of the internal construction of the wall (anchorage to backup, attachment method of stills, etc.) it is difficult to be confident of causes. We do see two apparent problems &mdash; water penetration as evidenced by the efflorescence and stresses (apparently axial) on the brick as evidenced by the spalling and cracking. A manufacturing problem with the brick is very unlikely; such problems are very rare with brick and because the problems are very localized. One location is at a corner where forces in a wall accumulate. There is no control joint near the corner. The efflorescence may be showing at damaged areas preferentially as the cracks are a path for moisture to escape, and that &quot;traffic&quot; leaves the efflorescence as a result. The lack of efflorescence or mortar deterioration in the cast stone sill or the sill bed joint points away from significant water infiltration.</p>
 
 			<h2>Anticipated Future Behavior</h2>
-			<p>I expect that the majority of the problem areas have shown themselves. I would expect to see a few new ones in year 2, and a declining number of new appearances in following years. This is not likely to lead to a reduced service life or to complete deterioration of a piece..</p>
+			<p>I expect that the majority of the problem areas have shown themselves. I would expect to see a few new ones in the next year or two, and a declining number of new appearances in following years. This is not likely to lead to a reduced service life of the building or the wall..</p>
 
 			<h2>Possible Remediation</h2>
-			<p>None practical in our opinion. You can replace. Any patch will likely be as visible or more so than what you see now and will be at risk to fail as it will be very thin and weak. The stones that are exposed are &quot;colder&quot;in terms of color than the surface, which shows a lot of brown sand particles. You could carefully take a fine paint brush and put a matching stain on the stone. This will be a lot of work and will reduce the visibility of the affected areas. Will affect appearance, will not affect durability</p>
+			<p>Cutting control joints in the brick may solve the problem. It is the simplest measure to take as there is no disassembly or opening of the wall. Consider doing that either where needed or in 2-3 affected areas. At the same time replace damaged bricks and mortar. If a year later there is no renewed spalling or significant efflorescence in the repaired areas, then consider it fixed. If not, or even now if you are concerned, you can have a masonry specialist engineer or consultant examine the wall.</p>
 
 			<h2>Your Particular Questions/Concerns</h2>
-			<p>Your main concern was whether these pieces were likely to continue scaling and crumbling over the next few years. That is not likely.</p>
+			<p>Your main concern was whether you had defective brick. You seem to have a problem with the construction of the wall rather defective materials. Your secondary concern was the consequence of doing nothing. The affected brick are likely to continue to deteriorate ifyou take no action.</p>
 
 			<h2>Attachments</h2>
-			<p><a href="images/qlgal/1234a1.pdf" target="_blank">1234a1.pdf</a> points to certain areas in one of your photos.</p>
-
+			<p>None.</p>
 		</div>
 
 		<div class="report-right">

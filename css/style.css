@@ -380,10 +380,14 @@ a:active.vlink {
 	text-align: center;
 	margin-top: -0.1em;
 }
-ul.submenu { padding:0; }
+ul.submenu { 
+	padding:0;
+	margin:0;
+}
 ul.submenu li {
-	display:inline;
+	display:inline-block;
 	list-style-type: none;
+	line-height:36px;
 }
 ul.submenu li a {
 	font-size: 1.2em;
@@ -412,6 +416,7 @@ ul.submenu li a:hover {
 .ql_next {
 	/*margin-left:auto;*/
 	float:right;
+	line-height:36px;
 }
 .ql_prev {
 	float:left;
@@ -438,21 +443,27 @@ ul.submenu li a:hover {
 
 .col1 {
 	float:left;
-	margin:0 50px 0 0;
+	margin:0 50px 50px 0 !important;
+}
+
+.ql_container {
+	/*text-align: center;*/
 }
 
 .qlform {
 	width:600px;
-	margin:0 auto;
+	/*margin:0 auto;*/
+	text-align:left;
 }
 
 .qlform ul {
 	list-style-type: none;
 	padding: 0;
+	margin: 0;
 }
 
 .qlform ul li ul{
-	padding-left: 210px;
+	/*padding-left: 210px;*/
 }
 
 .qlform li {
@@ -545,6 +556,13 @@ label[for="s_salt_exp"].error {
 	float:left;
 }
 .report-right {
-	width:45%;
-	margin-left:55%;
+	/*width:45%;*/
+	margin-left:50%;
+}
+
+#tabs {
+	text-align:left;
+}
+.hidden {
+	visibility: hidden;
 }
